@@ -1,0 +1,7 @@
+POST http://localhost:8081/data
+Content-Type: application/json
+
+{
+  "current": 5.0,
+  "voltage": 120.0
+}
