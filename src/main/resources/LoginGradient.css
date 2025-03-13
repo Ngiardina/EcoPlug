@@ -1,0 +1,33 @@
+.login-pane {
+    -fx-background-color: linear-gradient(to bottom right, #2ECC71, #1ABC9C, #FFFFFF);
+}
+
+.login-box {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 15;
+    -fx-padding: 20;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 2, 2);
+}
+
+.login-title {
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.login-field {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-background-radius: 10;
+    -fx-padding: 10;
+}
+
+.login-button {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10;
+}
+
+.login-button:hover {
+    -fx-background-color: #219150;
+}

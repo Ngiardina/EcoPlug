@@ -36,7 +36,9 @@ public class EnergyAnalyzer {
 
             double powerUsage = voltage * current;
 
-            main.getDashboardController().updateStatus(voltage + "\n" + current);
+
+            main.getDashboardController().updateVoltage(voltage);
+            main.getDashboardController().updatePower(powerUsage);
 
             if (powerUsage > 500) {
                 System.out.println("⚠️" + Utils.RED + "High power consumption detected: " + powerUsage + Utils.GREEN +" W" + Utils.RESET);
