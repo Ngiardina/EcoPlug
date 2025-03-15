@@ -1,11 +1,8 @@
 package org.energy.monitor;
 
-import com.google.gson.Gson;
-import org.energy.monitor.models.EnergyData;
-import org.energy.monitor.ui.DashboardController;
-import org.json.JSONObject;
+import javafx.application.Platform;
 
-import java.sql.SQLOutput;
+import org.json.JSONObject;
 
 public class EnergyAnalyzer {
 
@@ -15,9 +12,12 @@ public class EnergyAnalyzer {
      */
     private MainApp main;
 
+
     public EnergyAnalyzer(MainApp main) {
         this.main = main;
     }
+
+
     public void analyzeData(String jsonData) {
 
         try {
@@ -35,10 +35,23 @@ public class EnergyAnalyzer {
             double current = jsonObject.optDouble("current", 0.0);
 
             double powerUsage = voltage * current;
+//            if (listener != null) {
+//                listener.onVoltageUpdate(voltage);
+//                listener.onCurrentUpdate(current);
+//                listener.onPowerUpdate(powerUsage);
+//            }
+            Platform.runLater(() -> {
+                MainApp.getInstance().getDashboardScene().updateVoltage(voltage);
+                MainApp.getInstance().getDashboardScene().updateCurrent(current);
+                MainApp.getInstance().getDashboardScene().updatePower(powerUsage);
+            });
 
 
-            main.getDashboardController().updateVoltage(voltage);
-            main.getDashboardController().updatePower(powerUsage);
+
+
+
+
+
 
             if (powerUsage > 500) {
                 System.out.println("⚠️" + Utils.RED + "High power consumption detected: " + powerUsage + Utils.GREEN +" W" + Utils.RESET);
