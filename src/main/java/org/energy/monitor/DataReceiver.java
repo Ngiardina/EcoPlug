@@ -7,6 +7,7 @@ import static spark.Spark.*;
 public class DataReceiver {
 
 
+
     /**
      * Starts the Spark web server to receive data on the specified port.
      * @param port The port number to run the server on.
@@ -18,6 +19,9 @@ public class DataReceiver {
         this.main = main;
     }
 
+
+
+
     public  void startServer(int port) {
         port(port); //opens server at http://localhost:8081
 
@@ -28,8 +32,9 @@ public class DataReceiver {
 
 
 
+
             // Send received data to EnergyAnalyzer for processing
-            main.getEnergyAnalyzer().analyzeData(jsonData);
+           main.getEnergyAnalyzer().analyzeData(jsonData);
 
 
             res.status(200); // Return HTTP 200 OK status
